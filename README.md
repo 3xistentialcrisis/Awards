@@ -12,13 +12,13 @@ This a django application which allows a user to post a project he/she has creat
 ## Screenshots 
 ###### Home page
  
-<img src="https://raw.githubusercontent.com/3xistentialcrisis/Gram/master/static/images/.png" width="900px" height="440px">
+<img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
  
 ###### Sign Up
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Gram/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
 
 ###### User Profile
- <img src="https://raw.githubusercontent.com/3xistentialcrisis/Gram/master/static/images/.png" width="900px" height="440px">
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/.png" width="900px" height="440px">
 
  
 ## User Story  
@@ -41,7 +41,7 @@ To get the project .......
 ```
 ##### Navigate into the folder and install requirements  
  ```bash 
-cd Gram pip install -r requirements.txt 
+cd Awards pip install -r requirements.txt 
 ```
 ##### Install and activate Virtual  
  ```bash 
@@ -58,7 +58,7 @@ source virtual/bin/activate
  ##### Setup Database  
   SetUp your database User,Password, Host then make migrations 
  ```bash 
-python manage.py makemigrations instagram
+python manage.py makemigrations awards
  ``` 
  Now Migrate  
  ```bash 
