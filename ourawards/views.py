@@ -7,6 +7,7 @@ from .serializers import ProfileSerializer, UserSerializer
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+import random
 
 # Create your views here.
 #Index Page
@@ -22,10 +23,13 @@ def index(request):
 
     try:
         posts = Post.objects.all()
-        print = posts[::-1]
+        posts = posts[::-1]
+        a_post = random.randint(0, len(posts)-1)
+        random_post = posts[a_post]
+        print(random_post)
     except Post.DoesNotExist:
         posts = None
-    return render(request, 'index.html',{'posts': posts, 'form': form})
+    return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 
 #Profile View
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -141,9 +145,9 @@ def project(request, post):
 
 #Search User Project
 def search_project(request):
-    if 'title' in request.GET and request.GET['title']:
+    if request.method == 'GET':
         title = request.GET.get("title")
-        results = Post.search_project(title)
+        results = Post.objects.filter(title__icontains=title).all(
         print(results)
         message = f'name'
         params = {
