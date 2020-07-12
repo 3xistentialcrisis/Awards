@@ -3,7 +3,7 @@
 }
 
 #nbar{
-    background-color:#52616b;
+    background-color: black;
     color:black;
 }
 
@@ -32,7 +32,7 @@
 } 	
 
 body{
-    background-color:#d4d7dd;
+    background-color:white;
 } 	
 
 #heart{
@@ -101,3 +101,55 @@ body{
     display: flex;
     flex-wrap: wrap;
 } 	
+
+.bg{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin:0px;
+    padding:0px;
+}
+.over{
+    background-color: rgba(0,0,0,0.75);
+
+}
+
+#des{
+    color:white;
+    border: 3px solid orange;
+    border-radius: 50%;
+    padding: 16px;
+    font-size:12px;
+    margin-right:10px;
+    margin-left:70px;
+}
+
+#use{
+    color:white;
+    border: 3px solid blue;
+    border-radius: 50%;
+    padding: 6px;
+    font-size:12px;
+    margin-right:10px;
+}
+
+#conten{
+    color:white;
+    border: 3px solid green;
+    border-radius: 50%;
+    padding: 6px;
+    font-size:12px;
+    margin-right:10px;
+}
+#score{
+    color:white;
+    border: 3px solid red;
+    border-radius: 50%;
+    padding: 14px;
+    font-size:12px;
+    margin-right:10px;
+}
+
+.ting{
+    font-size:14px;
+}
