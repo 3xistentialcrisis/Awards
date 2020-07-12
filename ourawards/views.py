@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import SignupForm, PostForm, UpdateUserForm, UpdateUserProfileForm, RatingsForm
 from rest_framework import viewsets
 from .models import Profile,  Post, Rating
-from .serializers import ProfileSerializer, UserSerializer
+from .serializers import ProfileSerializer, UserSerializer, PostSerializer
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -41,6 +41,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+#Post View
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
 #User Signup
 def signup(request):
