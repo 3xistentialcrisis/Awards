@@ -55,4 +55,11 @@ def signup(request):
 def profile(request, username):
     return render(request, 'profile.html')
 
+#Project
+def project(request, post):
+    post = Post.objects.get(title=post)
 
+    params = {
+        'post': post
+    }
+    return render(request, 'project.html', params)
