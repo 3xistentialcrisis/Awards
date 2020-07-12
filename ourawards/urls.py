@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'signup/', views.signup, name='signup'),
     url(r'account/', include('django.contrib.auth.urls')),
     url(r'api/', include(router.urls)),
-    url(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api-auth/$', include('rest_framework.urls', namespace='rest_framework')),
     url(r'profile/(?P<username>.+)/$', views.profile, name='profile'),
 ]
 
