@@ -91,21 +91,25 @@ def project(request, post):
             rate.post = post
             rate.save()
             post_ratings = Rating.objects.filter(post=post)
-            design_ratings = [d.design for d in post_ratings]
 
+            design_ratings = [d.design for d in post_ratings]
             design_average = sum(design_ratings)/len(design_ratings)
-            print(design_average)
+            # print(design_average)
 
             usability_ratings = [us.usability for us in post_ratings]
             usability_average = sum(usability_ratings)/len(usability_ratings)
-            print(usability_average)
+            # print(usability_average)
 
             content_ratings = [content.content for content in post_ratings]
             content_average = sum(content_ratings)/len(content_ratings)
-            print(content_average)
+            # print(content_average)
 
             score = (design_average + usability_average + content_average)/3
             print(score)
+
+            rate.design_average = design_average
+            rate.usability_average = usability_average
+            rate.content_average = content_average
             rate.score = score
             rate.save()
     else:
