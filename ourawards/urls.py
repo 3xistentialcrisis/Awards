@@ -6,6 +6,7 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('profile', views.ProfileViewSet)
+router.register('users', views.UserViewSet)
 
 app_name = 'ourawards'
 

@@ -2,18 +2,25 @@ from django.shortcuts import render, redirect
 from .forms import SignupForm
 from rest_framework import viewsets
 from .models import Profile
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer, UserSerializer
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.models import User
 
 # Create your views here.
 #Index Page
 def index(request):
     return render(request, 'index.html')
 
+#Profile View
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     print(queryset)
     serializer_class = ProfileSerializer
+
+#User View
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 #User Signup
 def signup(request):
