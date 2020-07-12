@@ -1,43 +1,69 @@
+{% load crispy_forms_tags %}
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" id="nbar">
         <div class="container">
             <a class="navbar-brand" href="{% url 'ourawards:index' %}"> <strong class="mr-4 brand"> Award Us</strong></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <form class="form-inline">
-                            <div class="md-form my-0">
-                                <input class="form-control mr-sm-2 " type="text" placeholder="Search" aria-label="Search">
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-    
-                <ul class="navbar-nav navbar-right">
-                    {% if user.is_authenticated%}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                           aria-haspopup="true"
-                           aria-expanded="false">{{ user.username|title }}<img class="rounded-circle nav-img" src="{{ user.profile.profile_picture.url }}" alt="">
-                        </a>
-                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item text-center" href="{% url 'ourawards:profile' user.username %}">Profile</a>
-                          <hr>
-                            <a href="{% url 'logout' %}" class="text-secondary text-center dropdown-item">Log Out</a>
-    
-    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <form class="form-inline">
+                        <div class="md-form my-0">
+                            <input class="form-control mr-sm-2 " type="text" placeholder="Search" aria-label="Search">
                         </div>
-                    </li>
-                    {% else %}
-                    <a href="{% url 'login' %}" class="login btn btn-sm btn-info"> SignUp/Login </a>
-                    {% endif %}
-    
-                    <a href="" class="btn btn-sm btn-info" id="site"> Submit Your Site</a>
-                </ul>
-            </div>
+                    </form>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav navbar-right">
+                {% if user.is_authenticated%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">{{ user.username|title }} <img class="rounded-circle nav-img"
+                                                                            src="{{ user.profile.profile_picture.url }}"
+                                                                            alt="">
+                    </a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item text-center" href="{% url 'ourawards:profile' user.username %}">Profile</a>
+                        <hr>
+                        <a href="{% url 'ourawards:logout' %}" class="text-secondary text-center dropdown-item">Log Out</a>
+
+
+                    </div>
+                </li>
+                {% else %}
+                <a href="{% url 'ourawards:login' %}" class="login btn btn-sm btn-info"> SIGNUP/LOGIN </a>
+                {% endif %}
+                <button class="btn btn-info btn-sm" id="site" data-toggle="modal" data-target=".bd-example-modal-xl"> Submit Your Project Here
+                </button>
+                <div class="modal fade bd-example-modal-xl" id="ModalCenter" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalCenterTitle"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    <input type="submit" class="btn btn-sm btn-info" value="Save"/>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
