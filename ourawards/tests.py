@@ -23,8 +23,8 @@ class TestProfile(TestCase):
 class RatingTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(id=1, username='wanjiku')
-        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
-                                        user=self.user, url='http://ur.coml')
+        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/c2147450-4495-4df7-bcf0-9e2fe5dbc35b/art.jpg', description='desc',
+                                        user=self.user, url='https://uploadcare.com/')
         self.rating = Rating.objects.create(id=1, design=6, usability=7, content=9, user=self.user, post=self.post)
 
     def test_instance(self):
@@ -44,8 +44,8 @@ class RatingTest(TestCase):
 class PostTest(TestCase):
     def setUp(self):
         self.user = User.objects.create(id=1, username='wanjiku')
-        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/0ccf61ff-508e-46c6-b713-db51daa6626e', description='desc',
-                                        user=self.user, url='http://ur.coml')
+        self.post = Post.objects.create(id=1, title='test post', photo='https://ucarecdn.com/c2147450-4495-4df7-bcf0-9e2fe5dbc35b/art.jpg', description='desc',
+                                        user=self.user, url='https://uploadcare.com/')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.post, Post))
