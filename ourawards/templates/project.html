@@ -19,10 +19,14 @@
                                 {% for rating in post.ratings.all %}
                                 {% if forloop.counter is post.ratings.all.count %}
                                 <h3 id="design">{{ rating.design_average}}<br>
-                                    <span class="rates">design</span>
+                                    <span class="rates">Design</span>
                                 </h3>
-                                <h3 id="usable">{{ rating.usability_average }}</h3>
-                                <h3 id="content">{{ rating.content_average }}</h3>
+                                <h3 id="usable" class="mx-auto">{{ rating.usability_average }}<br> 
+                                    <span class="rates">Usability</span>
+                                </h3>
+                                <h3 id="content">{{ rating.content_average }}<br>
+                                    <span class="rates">Content</span>
+                                </h3>
                                 {% endif %}
                                 {% endfor %}
                             </div>
