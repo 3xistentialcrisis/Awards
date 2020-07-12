@@ -22,8 +22,8 @@
 } 	
 
 .account-img {
-    height: 165px;
-    width: 165px;
+    height: 125px;
+    width: 125px;
 } 
 
 .nav-img{
@@ -96,3 +96,8 @@ body{
     font-size:16px;
     font-weight:bolder;
 } 
+
+.display{
+    display: flex;
+    flex-wrap: wrap;
+} 	
