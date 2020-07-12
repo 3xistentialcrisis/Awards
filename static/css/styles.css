@@ -20,3 +20,13 @@
 .brand{
     font-weight: bolder;
 } 	
+
+.account-img {
+    height: 165px;
+    width: 165px;
+} 
+
+.nav-img{
+    height: 30px;
+    width: 30px;
+} 	
