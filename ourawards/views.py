@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .forms import SignupForm
+from .forms import SignupForm, PostForm
 from rest_framework import viewsets
-from .models import Profile
+from .models import Profile,  Post
 from .serializers import ProfileSerializer, UserSerializer
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -9,7 +9,19 @@ from django.contrib.auth.models import User
 # Create your views here.
 #Index Page
 def index(request):
-    return render(request, 'index.html')
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+    else:
+        form = PostForm()
+
+    try:
+        posts = Post.objects.all()
+    except Post.DoesNotExist:
+        posts = None
+    return render(request, 'index.html',{'posts': posts, 'form': form})
 
 #Profile View
 class ProfileViewSet(viewsets.ModelViewSet):
