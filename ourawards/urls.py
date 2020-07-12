@@ -5,9 +5,9 @@ from django.conf import settings
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('profile', views.ProfileViewSet)
 router.register('users', views.UserViewSet)
 router.register('posts', views.PostViewSet)
+router.register('profile', views.ProfileViewSet)
 
 app_name = 'ourawards'
 
