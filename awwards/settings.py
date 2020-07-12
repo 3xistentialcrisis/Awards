@@ -48,7 +48,13 @@ INSTALLED_APPS = [
     'ourawards',
     'crispy_forms',
     'rest_framework',
+    'pyuploadcare.dj',
 ]
+
+UPLOADCARE = {
+    'pub_key': '60216f20913a8918adfd',
+    'secret': '7b07353004771e420415',
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
