@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^profile/(?P<username>)', views.edit_profile, name='edit'),
     url(r'^project/(?P<post>)/$', views.project, name='project'),
-    url(r'search/', views.search_project, name='search'),
+    url(r'^search/', views.search_project, name='search'),
 ]
 
 if settings.DEBUG:
