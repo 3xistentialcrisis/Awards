@@ -21,15 +21,17 @@ def index(request):
     else:
         form = PostForm()
 
-    try:
-        posts = Post.objects.all()
-        posts = posts[::-1]
-        a_post = random.randint(0, len(posts)-1)
-        random_post = posts[a_post]
-        print(random_post.photo)
-    except Post.DoesNotExist:
-        posts = None
-    return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
+    # try:
+    #     posts = Post.objects.all()
+    #     posts = posts[::-1]
+    #     a_post = random.randint(0,len(posts)-1)
+    #     # a_post = random.randint(0,1)
+    #     random_post = posts[a_post]
+    #     print(random_post.photo)
+    # except Post.DoesNotExist:
+    #     posts = None
+    return render(request, 'index.html', {'form': form})
+    # return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 
 #Profile View
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -100,7 +102,7 @@ def edit_profile(request, username):
 @login_required(login_url='/accounts/login/')
 def project(request, post):
     post = Post.objects.get(title=post)
-    # [design, usability, content] = [[0], [0], [0]]
+    
     ratings = Rating.objects.filter(user=request.user, post=post).first()
     print('*************',ratings)
     rating_status = None
@@ -110,7 +112,7 @@ def project(request, post):
         rating_status = True
     if request.method == 'POST':
         form = RatingsForm(request.POST)
-        [design, usability, content] = [[0], [0], [0]]
+        
         if form.is_valid():
             rate = form.save(commit=False)
             rate.user = request.user
@@ -133,9 +135,9 @@ def project(request, post):
             score = (design_average + usability_average + content_average) / 3
             print(score)
 
-            rate.design_average = round(design_average, 2
-            rate.usability_average = round(design_average, 2
-            rate.content_average = round(design_average, 2
+            rate.design_average = round(design_average, 2)
+            rate.usability_average = round(design_average, 2)
+            rate.content_average = round(design_average, 2)
             rate.score = round(score, 2)
             rate.save()
             return HttpResponseRedirect(request.path_info)
@@ -152,7 +154,7 @@ def project(request, post):
 def search_project(request):
     if request.method == 'GET':
         title = request.GET.get("title")
-        results = Post.objects.filter(title__icontains=title).all(
+        results = Post.objects.filter(title__icontains=title).all()
         print(results)
         message = f'name'
         params = {

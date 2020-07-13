@@ -76,9 +76,9 @@ python manage.py makemigrations awards
 Open the application on your browser `127.0.0.1:8000`.  
   
 ## API Endpoints
-*  (https://awardus.herokuapp.com/api/users/)
-*  (https://awardus.herokuapp.com/api/profile/)
-*  (https://awardus.herokuapp.com/api/posts/)
+*  https://awardus.herokuapp.com/api/users/
+*  https://awardus.herokuapp.com/api/profile/
+*  https://awardus.herokuapp.com/api/posts/
 
 ## Technology used  
   
