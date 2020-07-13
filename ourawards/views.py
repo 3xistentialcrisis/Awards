@@ -33,18 +33,17 @@ def index(request):
     return render(request, 'index.html', {'form': form})
     # return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 
-#Profile View
+
 class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
-    print(queryset)
     serializer_class = ProfileSerializer
 
-#User View
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-#Post View
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -59,9 +58,9 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
-        else:
-            form = SignupForm()
+            return redirect('index.html')
+    else:
+        form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form })
 
 #Profile
@@ -97,6 +96,11 @@ def edit_profile(request, username):
         'prof_form': prof_form
     }
     return render(request, 'edit.html', params)
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('ourawards:login')
 
 #Project
 @login_required(login_url='/accounts/login/')
