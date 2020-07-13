@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^profile/(?P<username>\w+)', views.profile, name='profile'),
     url(r'(?P<username>/profile)', views.user_profile, name='userprofile'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^profile/(?P<username>)', views.edit_profile, name='edit'),
+    url(r'^profile/(?P<username>/settings)', views.edit_profile, name='edit'),
     url(r'^project/(?P<post>)', views.project, name='project'),
     url(r'search/', views.search_project, name='search'),
 ]
