@@ -21,17 +21,17 @@ def index(request):
     else:
         form = PostForm()
 
-    # try:
-    #     posts = Post.objects.all()
-    #     posts = posts[::-1]
-    #     a_post = random.randint(0,len(posts)-1)
-    #     # a_post = random.randint(0,1)
-    #     random_post = posts[a_post]
-    #     print(random_post.photo)
-    # except Post.DoesNotExist:
-    #     posts = None
-    return render(request, 'index.html', {'form': form})
-    # return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
+    try:
+        posts = Post.objects.all()
+        posts = posts[::-1]
+        a_post = random.randint(0, len(posts)-1)
+        # a_post = random.randint(0,1)
+        random_post = posts[a_post]
+        print(random_post.photo)
+    except Post.DoesNotExist:
+        posts = None
+    # return render(request, 'index.html', {'form': form})
+    return render(request, 'index.html', {'posts': posts, 'form': form, 'random_post': random_post})
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
