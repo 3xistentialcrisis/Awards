@@ -20,7 +20,9 @@ This a django application which allows a user to post a project he/she has creat
 ###### Login
  <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/login.png" width="900px" height="440px">
 
- 
+###### Login
+ <img src="https://raw.githubusercontent.com/3xistentialcrisis/Awards/master/static/images/upload.png" width="900px" height="440px">
+
 ## User Story  
 This app enables user to:
 
