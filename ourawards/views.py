@@ -63,6 +63,8 @@ def signup(request):
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form })
 
+
+
 #Profile
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
