@@ -11,11 +11,11 @@
                     <div class="card-body">
                         <h5 class="card-title"><a>Update Your Profile</a></h5>
                         <div class="card-text">
-                            <form action="" method="post" enctype="multipart/form-data" novalidate>
+                            <form action="{%url 'ourawards:profile'%}" method="post" method="post" enctype="multipart/form-data" novalidate>
                                 {% csrf_token %}
                                 {{ user_form|crispy }}
                                 {{ prof_form|crispy }}
-                                <input type="submit" href="{% url 'ourawards:Profile' user.username %}" class="btn btn-sm btn-info" value="Save"/>
+                                <input type="submit" class="btn btn-sm btn-info" value="Save"/>
                             </form>
                         </div>
                     </div>
