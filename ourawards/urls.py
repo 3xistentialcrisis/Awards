@@ -16,7 +16,8 @@ app_name = 'ourawards'
 urlpatterns = [
     url('^$', views.index, name='index'),
     url(r'signup/', views.signup, name='signup'),
-    url(r'accounts/login/', auth_views.LoginView.as_view()),
+    # url(r'accounts/login/', auth_views.LoginView.as_view(), name="login"),
+    url(r'login/$',views.login_request, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
     url(r'account/', include('django.contrib.auth.urls')),
     url(r'api/', include(router.urls)),

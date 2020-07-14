@@ -6,6 +6,7 @@ from .models import Profile,  Post, Rating
 from .serializers import ProfileSerializer, UserSerializer, PostSerializer
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponseRedirect
 import random
 
@@ -63,7 +64,20 @@ def signup(request):
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form })
 
-
+#User Login
+def login_request(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('/')
+    else:
+        form = AuthenticationForm()
+    return render(request = request, template_name = "registration/login.html", context={"form":form})
 
 #Profile
 @login_required(login_url='/accounts/login/')
