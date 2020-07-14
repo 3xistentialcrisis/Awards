@@ -15,7 +15,7 @@
                                 {% csrf_token %}
                                 {{ user_form|crispy }}
                                 {{ prof_form|crispy }}
-                                <input type="submit" class="btn btn-sm btn-info" value="Save"/>
+                                <input type="submit" href="{% url 'ourawards:Profile' user.username %}" class="btn btn-sm btn-info" value="Save"/>
                             </form>
                         </div>
                     </div>
