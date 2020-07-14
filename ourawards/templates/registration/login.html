@@ -12,7 +12,7 @@
                                 href="{% url 'ourawards:signup' %}" class="text-info">Register Here</a></span></h5>
                         <div class="card-text">
                             <form action="" method="post" novalidate >
-                                {% csrf_token%}
+                                {% csrf_token %}
                                 {{ form|crispy}}
                                 <button type="submit" class="btn btn-info btn-sm">LogIn</button>
                             </form>
